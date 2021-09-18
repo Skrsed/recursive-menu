@@ -4,7 +4,6 @@ export default function RecursiveMenu(data = dataSet) {
       if (element.classList.contains('menu__item')) {
         element.classList.toggle('menu__item_hidden')
       }
-      
     })
   }
   const createItemContent = (item) => {
