@@ -29,7 +29,7 @@ export default function RecursiveMenu(data = dataSet) {
     const itemFolderIcon = document.createElement('i')
     itemFolderIcon.classList.add('menu__icon', 'fas', 'fa-folder', 'fa-lg')
 
-    itemChevronIcon && itemContent.appendChild(itemChevronIcon)
+    itemContent.appendChild(itemChevronIcon)
     itemContent.appendChild(itemFolderIcon)
     itemContent.appendChild(itemText)
 
