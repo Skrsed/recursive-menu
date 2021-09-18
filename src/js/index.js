@@ -1,6 +1,8 @@
 export default function RecursiveMenu(data = dataSet) {
   const clickListner = (event) => {
-    [...event.target.children].forEach(element => {
+    const finded = event.path.find(element => element.classList.contains('menu__item'))
+
+    finded && [...finded.children].forEach(element => {
       if (element.classList.contains('menu__item')) {
         element.classList.toggle('menu__item_hidden')
       }
@@ -8,6 +10,7 @@ export default function RecursiveMenu(data = dataSet) {
   }
   const createItemContent = (item) => {
     if (!item || !item.hasOwnProperty('items') || !item.hasOwnProperty('content')) {
+
       return null
     }
 
@@ -24,6 +27,7 @@ export default function RecursiveMenu(data = dataSet) {
     if (item.items.length) {
       itemChevronIcon.classList.add('fa-chevron-up')
       itemNestedItems = createMenuList(item.items)
+      itemContent.classList.add('pointer')
     }
 
     const itemFolderIcon = document.createElement('i')
@@ -36,6 +40,7 @@ export default function RecursiveMenu(data = dataSet) {
     return itemNestedItems ? [itemContent, ...itemNestedItems] : [itemContent]
   }
   const createMenuList = (data, isroot = false) => {
+
     return data.map((item) => {
       const menuListItem = document.createElement('div')
       menuListItem.classList.add('menu__item')
