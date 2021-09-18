@@ -42,9 +42,7 @@ export default function RecursiveMenu(data = dataSet) {
       !isroot && menuListItem.classList.add('menu__item_hidden')
 
       const itemContent = createItemContent(item)
-      if (itemContent) {    
-        menuListItem.append(...itemContent)
-      }
+      itemContent && menuListItem.append(...itemContent)
 
       return menuListItem
     })
