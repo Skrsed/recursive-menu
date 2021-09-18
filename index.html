@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Task 2.1</title>
+    <link href="./src/css/fontawesome/css/fontawesome.css" rel="stylesheet">
+    <link href="./src/css/fontawesome/css/solid.css" rel="stylesheet">
+    <link rel="stylesheet" href="./src/css/style.css">
+    <script type="module">
+      import RecursiveMenu from './src/js/index.js'
+      import dataSet from './src/js/data.js'
+
+      const menuWrapper = document.getElementById('menu-wrapper')
+      menuWrapper.appendChild(RecursiveMenu(dataSet))
+    </script>
+  </head>
+  <body>
+    <div id="menu-wrapper" class="menu-wrapper"></div>
+  </body>
+</html>

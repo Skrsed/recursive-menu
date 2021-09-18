@@ -1,0 +1,94 @@
+export default function RecursiveMenu(data = dataSet) {
+  
+  const itemToggle = function (event) {
+    [...event.target.children]
+    .forEach(element => {
+      if (element.getAttribute('aria-expanded') === 'false') {
+        element.setAttribute('aria-expanded', true)
+      } else if (element.getAttribute('aria-expanded') === 'true') {
+        element.setAttribute('aria-expanded', false)
+      }
+    })
+  }
+
+  const generateMenuItems = function(data, params = { isRoot: false }) {
+    const { isRoot } = params
+
+    if (!data.hasOwnProperty('items')) return ''
+    
+    const res = data.items.map((item) => {
+      
+      return `
+        <div class="menu__item" id="${ item.content }" aria-expanded="${ isRoot }">
+          <div class="menu__content">
+            <i class="menu__icon menu__chevron-icon menu__icon_hidden fas fa-chevron-down fa-sm"></i>
+            
+            <i class="menu__icon menu__folder-icon fas fa-folder fa-lg"></i>
+            <span class="menu__text">${ item.content || '' }</span>
+          </div>
+          ${ generateMenuItems(item) }
+        </div>
+      `
+    })
+
+    return res.join('\r\n')
+  }
+
+  const menuItems = generateMenuItems(data, { isRoot: true })
+
+  return `<div id="menu" class="menu" onclick="(${ itemToggle })(event)">${ menuItems }</div>`
+}
+
+const dataSet =
+{
+  "content": "Каталог товаров",
+  "items": [
+    {
+      "content": "Мойки",
+      "items": [
+        {
+          "content": "Ulgran",
+          "items": [
+            {
+              "content": "Smth",
+              "items": [
+              ]
+            },
+            {
+              "content": "Smth",
+              "items": [
+              ]
+            }
+          ]
+        },
+        {
+          "content": "Vigro Mramor",
+          "items": [
+          ]
+        },
+        {
+          "content": "Handmade",
+          "items": [
+            {
+              "content": "Smth",
+            },
+            {
+              "content": "Smth",
+              "items": [
+              ]
+            }
+          ]
+        },
+        {
+          "content": "Vigro Glass",
+        }
+      ]
+    },
+    {
+      "content": "Фильтры",
+      "items": [
+      ]
+    }
+    
+  ]
+}

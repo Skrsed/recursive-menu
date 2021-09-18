@@ -1,0 +1,31 @@
+.menu__item {
+  position: relative;
+  padding-left: 20px;
+}
+.menu__item_hidden {
+  display: none;
+}
+.menu__content {
+  display: flex;
+  align-items: center;
+  font-size: 14pt;
+
+  /* prevent event bubbling from the content */
+  pointer-events: none;
+}
+.menu__icon:empty {
+  width: .875em;
+  height: .875em;
+}
+.menu__icon.fa-chevron-up {
+  color: #c5c5c5;
+}
+.menu__icon.fa-folder {
+  color: #cf0036;
+}
+.menu__icon {
+  margin-right: 15px;
+}
+.icon-wrapper.hidden {
+  visibility: hidden;
+}
